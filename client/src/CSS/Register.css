@@ -1,0 +1,17 @@
+.Register {
+  display: grid;
+  place-content: center;
+  width: 250px;
+  padding: 20px 0 30px 0;
+
+  /* margin: 100px 0px 0px 450px; */
+  margin: 120px auto auto auto;
+
+  background-color: aquamarine;
+}
+.Register .form-background form input {
+  display: flex;
+  line-height: 30px;
+  margin: 10px 0;
+  /* border-radius: 2px; */
+}
