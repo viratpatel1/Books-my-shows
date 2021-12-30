@@ -15,7 +15,7 @@ function EditMovie()
     useEffect((id) =>
     {
 
-        fetch(`${local}admin/updatemovies/${match.params.id}`)
+        fetch(`${url}admin/updatemovies/${match.params.id}`)
             .then(res => res.json())
             .then(res => setTodo(res))
         // .then((res) => console.log("19 ", res))
@@ -26,11 +26,12 @@ function EditMovie()
         try
         {
             // console.log("26 ", data)
-            await axios.put(`/admin/updatemovies/${match.params.id}`, data)
-                .then(res => console.log(res))
+            await axios.put(`${url}admin/updatemovies/${match.params.id}`, data)
+                .then(res => console.log("Updated Successfully"))
+                .catch(() => console.log("Error"))
         } catch (error)
         {
-            console.log(error.message)
+            console.log(error.response.data.message)
         }
 
     }

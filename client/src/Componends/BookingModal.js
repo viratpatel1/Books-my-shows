@@ -1,20 +1,21 @@
 import React, { useEffect, createContext, useReducer, useState } from 'react';
 import { Button, Form, Row, Col } from "react-bootstrap";
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const local = "http://localhost:4000/";
-const url = "";
+const Local = "http://localhost:4000/";
+const url = "https://books-my-shows.herokuapp.com/";
 
 const BookingModal = () =>
 {
     const { register, handleSubmit } = useForm();
     const history = useHistory();
-    const [name, setName] = useState();
+    const [movie, setMovie] = useState()
     const token = localStorage.getItem("token");
+    const { id } = useParams();
 
     useEffect(() =>
     {
@@ -23,17 +24,30 @@ const BookingModal = () =>
             history.push("/login");
         } else
         {
-            history.push("/book-ticket");
+            history.push(`/book-ticket/${id}`);
         }
     }, []);
 
+    // useEffect(() =>
+    // {
+    //     fetch(`${url}u`)
+    //         .then(res => res.json())
+    //         .then(res => setMovie(res));
+
+    // }, [Movie])
+
     const onSubmit = handleSubmit(async (data) =>
     {
+        // { Movie._id === id ? setCheck(Movie.movie_name) : null }
+        // console.log("Mo ", id)
+
         try
         {
             const { text, number, email } = data
             console.log(data)
-            axios.post(`${local}book-ticket`, { text, number, email })
+            // setMovie(id);
+            console.log(id)
+            await axios.post(`${url}book-ticket`, { text, number, email, id })
                 .then((res) => toast(res.data.message))
                 .catch((error) => toast(error.response.data.message))
         } catch (error)

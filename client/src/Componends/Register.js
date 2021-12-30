@@ -35,7 +35,7 @@ function Register()
             const { Name, Email, Password, CPassword } = user;
 
             axios
-                .post("/sign-up", user)
+                .post("https://books-my-shows.herokuapp.com/sign-up", user)
                 .then((res) => 
                 {
                     toast("Register Successfully")

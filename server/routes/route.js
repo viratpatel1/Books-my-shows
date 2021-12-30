@@ -46,6 +46,13 @@ router.get("/u", async (req, res) =>
 });
 
 
+// router.get("/u/:id", async (req, res) =>
+// {
+//     await Admin.find()
+//         .then((re) => res.send(re))
+//         .catch((err) => res.send(err))
+// });
+
 router.get("/admin", async (req, res) =>
 {
     res.send("admin");
@@ -191,8 +198,8 @@ router.post("/admin/movies", upload.single('photo'), async (req, res) =>
 
 router.post("/book-ticket", async (req, res) =>
 {
-    const { text, number, email } = req.body;
-    console.log(text, number, email);
+    const { text, number, email, id } = req.body;
+    console.log(text, number, email, id);
 
     await loginuser.findOne({ Email: email })
         .then((user) =>
@@ -208,7 +215,7 @@ router.post("/book-ticket", async (req, res) =>
                     to: user.Email,
                     from: "resetpass233@gmail.com",
                     subject: "Password Reset",
-                    html: `<h2>${text}, you have Successfully Booked ${number} for the show</h2>
+                    html: `<h2>${text}, you have Successfully Booked ${number} for the <strong>${id}</strong> Movie Show</h2>
                     <h3>Thank You</h3>`
                     // `<h2>Click on this <a href="https://passwords-reset.herokuapp.com/reset/${token}">link</a> to Reset Password</h2>`
                 })
@@ -241,14 +248,13 @@ router.put('/admin/updatemovies/:id', async (req, res) =>
             // _id: req.params.id;
             exercise.movie_name = req.body.movie_name;
             exercise.release_date = req.body.release_date;
-
             exercise.description = req.body.description;
 
             exercise.save()
                 .then(() => res.json('User updated Correctly!'))
                 .catch(err => res.status(400).json('Error hai: ' + err));
         })
-        .catch(err => res.status(400).json('Error: ' + err));
+        .catch(err => res.status(404).json('Error: ' + err));
 });
 
 export const RouterPage = router;

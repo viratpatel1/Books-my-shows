@@ -52,7 +52,8 @@
   display: inline-flex;
   justify-content: center;
   border: 2px solid red;
-  margin: 15px;
+  /* margin: 15px; */
+  margin: 20px 10px;
   height: 450px;
   width: 300px;
 }
@@ -69,12 +70,14 @@
   color: #ffff;
   width: auto;
   height: 20px;
+  font-weight: 500;
   /* margin: auto 12px 0px 0px; */
-  border-radius: 0px;
+  border-radius: 10px;
 }
 .Card-Details h2 {
   align-items: center;
   text-align: center;
+  font-weight: 600;
 }
 .Card-Details {
   display: none;

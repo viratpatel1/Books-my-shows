@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 // import token from "./App.js";
 import "../CSS/Movies.css";
 // import CircularProgress from '@material-ui/core/CircularProgress';
@@ -32,7 +32,7 @@ function MovieDetails()
     useEffect(() =>
     {
         SetLoading(true)
-        fetch(`${local}u`)
+        fetch(`${url}u`)
             .then(res => res.json())
             .then(res => setMovie(res));
         SetLoading(false)
@@ -45,7 +45,7 @@ function MovieDetails()
 
             if ((token !== "undefined") && (token !== "") && (token !== null))
             {
-                history.push("/book-ticket");
+                history.push("/book-ticket/:id");
             } else
             {
                 history.push("/login");
@@ -78,7 +78,7 @@ function MovieDetails()
                                 <p>{description}</p>
                                 {/* <p>{release_date}</p> */}
                                 <div className="Button">
-                                    <button style={{ padding: "5px 10px 28px 10px" }} onClick={verify}>Book Now</button>
+                                    <Link to={"/book-ticket/" + movie_name} > <button style={{ padding: "5px 10px 28px 10px" }} onClick={verify}>Book Now</button></Link>
                                 </div>
                             </div>
                         </div>

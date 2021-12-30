@@ -31,7 +31,7 @@ function MovieDetails()
 
     const AutoReload = () =>
     {
-        fetch(`${local}u`)
+        fetch(`${url}u`)
             .then(res => res.json())
             .then(res => setMovie(res));
     }
@@ -44,7 +44,7 @@ function MovieDetails()
 
     const Delete = (id) =>
     {
-        axios.delete(`/${id}`)
+        axios.delete(`${url}${id}`)
             .then((res) =>
             {
                 AutoReload();

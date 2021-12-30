@@ -13,6 +13,9 @@ const initialState = {
     poster_path: "",
 }
 
+const local = "http://localhost:4000/";
+const url = "https://books-my-shows.herokuapp.com/";
+
 const reducer = (state, action) =>
 {
     return { ...state, [action.input]: action.value };
@@ -54,7 +57,7 @@ const Movies = () =>
                 }
             }
 
-            axios.post("/admin/movies", formData, congir)
+            axios.post(`${url}admin/movies`, formData, congir)
                 .then(res => console.log(res));
             history.push("/admin/viewmovies");
 

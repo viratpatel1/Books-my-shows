@@ -11,7 +11,7 @@ function AdminList()
     const history = useHistory();
     const AutoReload = () =>
     {
-        fetch(`${local}u`)
+        fetch(`${url}u`)
             .then(res => res.json())
             .then(res => setItems(res));
     }
