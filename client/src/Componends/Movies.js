@@ -38,30 +38,30 @@ function MovieDetails()
         SetLoading(false)
     }, [Movie])
 
-    const verify = () =>
-    {
-        try
-        {
+    // const verify = () =>
+    // {
+    //     try
+    //     {
 
-            if ((token !== "undefined") && (token !== "") && (token !== null))
-            {
-                history.push("/book-ticket/:id");
-            } else
-            {
-                history.push("/login");
-            }
+    //         if ((token !== "undefined") && (token !== "") && (token !== null))
+    //         {
+    //             history.push("/book-ticket/:id");
+    //         } else
+    //         {
+    //             history.push("/login");
+    //         }
 
 
-        } catch (err)
-        {
-            console.log("Something went wrong")
+    //     } catch (err)
+    //     {
+    //         console.log("Something went wrong")
 
-        }
-    }
+    //     }
+    // }
 
 
     return (
-        <div className="container">
+        <div style={{ maxWidth: "1327px" }} className="container">
             {/* {loading && <Box sx={{ display: 'flex' }}>
                 <CircularProgress />
             </Box>} */}
@@ -78,7 +78,7 @@ function MovieDetails()
                                 <p>{description}</p>
                                 {/* <p>{release_date}</p> */}
                                 <div className="Button">
-                                    <Link to={"/book-ticket/" + movie_name} > <button style={{ padding: "5px 10px 28px 10px" }} onClick={verify}>Book Now</button></Link>
+                                    <Link to={"/book-ticket/" + movie_name} > <button style={{ padding: "5px 10px 28px 10px" }} >Book Now</button></Link>
                                 </div>
                             </div>
                         </div>

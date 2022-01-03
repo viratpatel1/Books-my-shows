@@ -1,6 +1,8 @@
-/* .container {
-  background-color: rgb(170, 170, 235);
-} */
+.container {
+  /* background-color: rgb(170, 170, 235); */
+  margin: 0 0 0 2%;
+  /* max-width: 100%; */
+}
 /* .btn-modal {
   display: none;
   padding: 10px 20px;
@@ -52,6 +54,7 @@
   display: inline-flex;
   justify-content: center;
   border: 2px solid red;
+  border-radius: 10px;
   /* margin: 15px; */
   margin: 20px 10px;
   height: 450px;
@@ -98,4 +101,11 @@
   );
   max-height: 100%;
   transform: translateY(-101%);
+}
+
+@media only screen and (max-width: 665px) {
+  .container {
+    /* align-items: center; */
+    text-align: center;
+  }
 }

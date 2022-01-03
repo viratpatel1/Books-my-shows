@@ -50,6 +50,7 @@ const BookingModal = () =>
             await axios.post(`${url}book-ticket`, { text, number, email, id })
                 .then((res) => toast(res.data.message))
                 .catch((error) => toast(error.response.data.message))
+            // history.push("/");
         } catch (error)
         {
             console.log("Error")

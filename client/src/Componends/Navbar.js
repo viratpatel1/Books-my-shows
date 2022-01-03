@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../CSS/Navbar.css';
 import { SwitchContext } from '../App.js';
@@ -7,15 +7,21 @@ import { SwitchContext } from '../App.js';
 
 function Navbar()
 {
-    const token = localStorage.getItem("token");
     const userInfo = localStorage.getItem("userInfo");
     const res = JSON.parse(userInfo)
+    const [check, setCheck] = useState('')
     // console.log("16 ", userInfo, res.Name)
     const { state, dispatch } = useContext(SwitchContext);
+    const token = localStorage.getItem("token");
+
+    useEffect(() =>
+    {
+        setCheck(token)
+    }, [token, userInfo, check])
 
     const Rendering = () =>
     {
-        if (state)
+        if (check && userInfo)
         {
             return (
                 <>
@@ -27,6 +33,7 @@ function Navbar()
                         {
                             dispatch({ type: "User", payload: false })
                             localStorage.removeItem("token")
+                            localStorage.removeItem("userInfo")
                         }} exact to="/login" >Logout</Link>
                     </li>
                 </>

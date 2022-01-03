@@ -42,9 +42,9 @@ function MovieDetails()
     }, [Movie])
 
 
-    const Delete = (id) =>
+    const Delete = async (id) =>
     {
-        axios.delete(`${url}${id}`)
+        await axios.delete(`${url}${id}`)
             .then((res) =>
             {
                 AutoReload();
