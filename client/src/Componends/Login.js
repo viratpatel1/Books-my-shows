@@ -42,7 +42,7 @@ function Login()
                 console.log("43")
                 dispatch({ type: "User", payload: true })
                 console.log("Admin")
-                history.push("/admin");
+                history.push("/admin/viewmovies");
             }
             else if (data.Role == "0" && (token !== "undefined") && (token !== "") && (token !== null))
             {

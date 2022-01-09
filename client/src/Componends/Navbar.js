@@ -10,15 +10,17 @@ function Navbar()
     const userInfo = localStorage.getItem("userInfo");
     const res = JSON.parse(userInfo)
     const [check, setCheck] = useState('')
-    // console.log("16 ", userInfo, res.Name)
+    const [user, setUser] = useState('')
     const { state, dispatch } = useContext(SwitchContext);
     const token = localStorage.getItem("token");
 
     useEffect(() =>
     {
         setCheck(token)
+        setUser(JSON.parse(userInfo))
     }, [token, userInfo, check])
 
+    console.log("UR ", user?.Role);
     const Rendering = () =>
     {
         if (check && userInfo)
@@ -26,14 +28,14 @@ function Navbar()
             return (
                 <>
                     <li>
-                        <Link style={{ textDecoration: 'none', color: "black" }} exact to="/" >Home</Link>
+                        {(user?.Role === 1) ? null : (<Link style={{ textDecoration: 'none', color: "black" }} exact to="/" >Home</Link>)}
                     </li>
                     <li>
                         <Link style={{ textDecoration: 'none', color: "black" }} onClick={() =>
                         {
                             dispatch({ type: "User", payload: false })
-                            localStorage.removeItem("token")
-                            localStorage.removeItem("userInfo")
+                            localStorage.removeItem("token");
+                            localStorage.removeItem("userInfo");
                         }} exact to="/login" >Logout</Link>
                     </li>
                 </>

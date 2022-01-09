@@ -8,6 +8,9 @@ import { initialState, reducer } from "./useRuducer/reducer";
 import './App.css';
 import React, { useEffect, createContext, useReducer, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import AdminMovies from './Admin-Componends/AdminMovies';
+import EditMovie from './Admin-Componends/EditMovie';
+import Moviess from './Admin-Componends/Movies';
 // import PageNotFound from './Componends/PageNotFound';
 
 
@@ -15,6 +18,10 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 export const SwitchContext = createContext();
 const Routing = () =>
 {
+  const [info, setInfo] = useState()
+  const adminInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+  // console.log("AI ", adminInfo)
   return (
     <>
       <Switch>
@@ -22,7 +29,11 @@ const Routing = () =>
         <Route exact path="/book-ticket/:id" component={BookingModal} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/sign-up" component={Register} />
-        <Route exact path="/admin" component={Apps} />
+        {/* <Route exact path="/admin" component={Apps} /> */}
+        <Route exact path="/admin/uploadmovies" component={Moviess} />
+        <Route exact path="/admin/viewmovies" component={AdminMovies} />
+        <Route exact path="/admin/updatemovies/:id" component={EditMovie} />
+        {/* <Route exact path="/admin" component={Apps} /> */}
         {/* <Route component={PageNotFound} /> */}
       </Switch>
     </>

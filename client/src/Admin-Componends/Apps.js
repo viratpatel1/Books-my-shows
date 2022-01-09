@@ -4,7 +4,7 @@ import Sidebar from './Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useHistory } from 'react-router-dom'
 // import Movies from '../Admin/Movies';
-import Movies from "./Movies"
+import Moviess from "./Movies"
 import EditMovie from './EditMovie';
 import AdminMovies from "./AdminMovies";
 
@@ -21,7 +21,7 @@ function Apps()
 
             if ((token !== "undefined") && (token !== "") && (token !== null))
             {
-                history.push("/admin");
+                history.push("/admin/viewmovies");
 
             } else
             {
@@ -35,15 +35,15 @@ function Apps()
 
         }
 
-    }, [])
+    }, [token])
 
     return (
         <Router>
             <Sidebar />
             <Switch>
-                <Route path='/admin/uploadmovies' exact component={Movies} />
-                <Route path='/admin/viewmovies' exact component={AdminMovies} />
-                <Route path='/admin/updatemovies/:id' exact component={EditMovie} />
+                <Route exact path='/admin/uploadmovies' component={Moviess} />
+                <Route exact path='/admin/viewmovies' component={AdminMovies} />
+                <Route exact path='/admin/updatemovies/:id' component={EditMovie} />
             </Switch>
         </Router>
     );

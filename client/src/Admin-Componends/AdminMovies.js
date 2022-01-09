@@ -6,6 +6,7 @@ import "./Admin-CSS/AdminMovies.css";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Sidebar from './Sidebar';
 
 
 
@@ -13,12 +14,13 @@ function AdminMovies()
 {
     return (
         <div className="Movie-Details">
+            <Sidebar />
             <MovieDetails />
         </div>
     )
 }
 
-const local = "http://localhost:4000/";
+// const url = "http://localhost:4000/";
 const url = "https://books-my-shows.herokuapp.com/";
 
 function MovieDetails()
@@ -33,13 +35,9 @@ function MovieDetails()
     {
         fetch(`${url}u`)
             .then(res => res.json())
-            .then(res => setMovie(res));
+            .then(res => setMovie(res.reverse()));
     }
 
-    useEffect(() =>
-    {
-        AutoReload();
-    }, [Movie])
 
 
     const Delete = async (id) =>
@@ -48,10 +46,17 @@ function MovieDetails()
             .then((res) =>
             {
                 AutoReload();
-                toast("Deleted")
+                toast("Deleted");
+                console.log("Deleted")
             })
             .catch(() => { toast("Error in the Code") })
     }
+
+    useEffect(() =>
+    {
+        AutoReload();
+    }, [Movie, Delete])
+
     return (
         <div className="edit">
             <div className="container">
@@ -75,6 +80,7 @@ function MovieDetails()
                                         </div>
                                     </div>
                                 </div>
+                                <ToastContainer />
                             </div>
                         </>
                     )
@@ -82,7 +88,6 @@ function MovieDetails()
                 )}
 
             </div>
-            {/* <ToastContainer /> */}
         </div>
     )
 }

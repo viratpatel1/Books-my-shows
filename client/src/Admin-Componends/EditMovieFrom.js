@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router';
 import "./Admin-CSS/EditMovieFrom.css";
+import Sidebar from './Sidebar';
 // import { Link } from 'react-router-dom';
 
 
@@ -29,16 +30,19 @@ function EditMovieFrom({ todo, onSubmit })
     // {
     // }
     return (
-        <div className="Edit">
-            <form onSubmit={submitHandler}>
-                <input {...register("movie_name")} type="text" name="movie_name" id="text" placeholder="Movie name"></input>
-                {/* <input {...register("release_date")} type="text" name="release_date" id="text" placeholder="Release date"></input> */}
-                <input {...register("description")} type="text" name="description" id="text" placeholder="Description"></input>
-                <button type="submit">Edit</button>
-                {/* <Link to={"/admin/viewmovies"} ><button>Edit</button></Link> */}
+        <>
+            {/* <Sidebar /> */}
+            <div className="Edit">
+                <form onSubmit={submitHandler}>
+                    <input {...register("movie_name")} type="text" name="movie_name" id="text" placeholder="Movie name"></input>
+                    {/* <input {...register("release_date")} type="text" name="release_date" id="text" placeholder="Release date"></input> */}
+                    <input {...register("description")} type="text" name="description" id="text" placeholder="Description"></input>
+                    <button type="submit">Edit</button>
+                    {/* <Link to={"/admin/viewmovies"} ><button>Edit</button></Link> */}
 
-            </form>
-        </div>
+                </form>
+            </div>
+        </>
     )
 }
 

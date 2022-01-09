@@ -51,28 +51,28 @@ const Sidebar = () =>
     const token = localStorage.getItem("token");
 
 
-    useEffect(() =>
-    {
-        try
-        {
+    // useEffect(() =>
+    // {
+    //     try
+    //     {
 
-            if ((token !== "undefined") && (token !== "") && (token !== null))
-            {
-                history.push("/admin");
+    //         if ((token !== "undefined") && (token !== "") && (token !== null))
+    //         {
+    //             history.push("/admin/viewmovies");
 
-            } else
-            {
-                history.push("/login");
-            }
+    //         } else
+    //         {
+    //             history.push("/login");
+    //         }
 
 
-        } catch (err)
-        {
-            console.log("Something went wrong")
+    //     } catch (err)
+    //     {
+    //         console.log("Something went wrong")
 
-        }
+    //     }
 
-    }, [])
+    // }, [])
 
     return (
         <>

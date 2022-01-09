@@ -1,6 +1,9 @@
 .container {
   /* background-color: rgb(170, 170, 235); */
-  margin: 0 0 0 2%;
+  /* margin: 0 0 0 2%; */
+  align-items: center;
+  text-align: center;
+  justify-content: center;
 }
 /* .btn-modal {
   display: none;
@@ -55,7 +58,7 @@
   border: 2px solid red;
   border-radius: 10px;
   /* margin: 15px;  */
-  margin: 20px 5px;
+  margin: 20px 10px;
   height: 450px;
   width: 300px;
 }
@@ -73,6 +76,7 @@
   background-color: rgb(16, 85, 224);
   color: #ffff;
   width: auto;
+  font-weight: 500;
   height: 20px;
   margin: auto 2px 0px 0px;
   border-radius: 10px;
@@ -80,6 +84,7 @@
 .Card-Details h2 {
   align-items: center;
   text-align: center;
+  font-weight: 600;
 }
 .Card-Details {
   display: none;

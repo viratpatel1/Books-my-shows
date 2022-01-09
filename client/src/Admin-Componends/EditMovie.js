@@ -2,8 +2,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useRouteMatch } from 'react-router-dom';
 import EditMovieFrom from './EditMovieFrom';
+import Sidebar from './Sidebar';
+import { toast, ToastContainer } from 'react-toastify';
 
-const local = "http://localhost:4000/";
+// const url = "http://localhost:4000/";
 const url = "https://books-my-shows.herokuapp.com/";
 
 function EditMovie()
@@ -38,9 +40,11 @@ function EditMovie()
 
     return (
         <>
+            <Sidebar />
             <h4>Edit Item</h4>
             {/* <h6>{match.params.id}</h6> */}
             {todo ? (<EditMovieFrom todo={todo} onSubmit={onSubmit} />) : (<h3>Loading...</h3>)}
+            <ToastContainer />
         </>
     )
 }
