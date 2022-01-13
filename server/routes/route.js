@@ -9,9 +9,16 @@ import sendgridTransport from "nodemailer-sendgrid-transport";
 import nodemailer from "nodemailer";
 import path from "path";
 import dotenv from "dotenv";
+import Razorpay from "razorpay";
+import shortid from "shortid";
 dotenv.config();
 
 const router = express.Router()
+
+const razorpay = new Razorpay({
+    key_id: process.env.key_id,
+    key_secret: process.env.secret
+})
 
 const transporter = nodemailer.createTransport(sendgridTransport({
     auth: {
@@ -57,7 +64,6 @@ router.get("/admin", async (req, res) =>
 {
     res.send("admin");
 });
-
 
 // Login Route
 router.post("/login", async (req, res) =>
@@ -117,7 +123,6 @@ router.post("/login", async (req, res) =>
     }
 
 });
-
 
 //Register Route
 router.post("/sign-up", async (req, res) =>
@@ -198,10 +203,10 @@ router.post("/admin/movies", upload.single('photo'), async (req, res) =>
 
 router.post("/book-ticket", async (req, res) =>
 {
-    const { text, number, email, id } = req.body;
-    console.log(text, number, email, id);
+    const { str, emails, id, arr } = req.body;
+    // console.log(str, emails, id, arr);
 
-    await loginuser.findOne({ Email: email })
+    await loginuser.findOne({ Email: emails })
         .then((user) =>
         {
             // console.log(user)
@@ -215,7 +220,7 @@ router.post("/book-ticket", async (req, res) =>
                     to: user.Email,
                     from: "resetpass233@gmail.com",
                     subject: "Password Reset",
-                    html: `<h2>${text}, you have Successfully Booked ${number} for the <strong>${id}</strong> Movie Show</h2>
+                    html: `<h2>${user.Name}, you have Successfully Booked ${id} tickets for <strong>${str}</strong> Movie Show, Your seats are <strong>${arr}</strong>. </h2>
                     <h3>Thank You</h3>`
                     // `<h2>Click on this <a href="https://passwords-reset.herokuapp.com/reset/${token}">link</a> to Reset Password</h2>`
                 })
@@ -257,4 +262,67 @@ router.put('/admin/updatemovies/:id', async (req, res) =>
         .catch(err => res.status(404).json('Error: ' + err));
 });
 
+router.post("/razorpay", async (req, res) =>
+{
+    // console.log(req.body)
+    const { amount } = req.body;
+    const payment_capture = 1
+    // const amount = 10000
+    const currency = "INR"
+    // console.log("a ", amount)
+    // console.log("str ", str)
+    // console.log("id ", id)
+    // console.log("email ", emails)
+    try
+    {
+        const response = await razorpay.orders.create({
+            amount: amount * 100,
+            currency,
+            receipt: shortid.generate(),
+            payment_capture,
+        });
+
+        res.json({
+            id: response.id,
+            currency: response.currency,
+            amount: response.amount
+        });
+
+
+    } catch (error)
+    {
+        console.log(error)
+    }
+});
+
 export const RouterPage = router;
+
+
+
+
+// router.post("/book-ticket", async (req, res) =>
+// {
+//     const { text, number, email, id } = req.body;
+//     console.log(text, number, email, id);
+
+//     await loginuser.findOne({ Email: email })
+//         .then((user) =>
+//         {
+//             if (!user)
+//             {
+//                 return res.status(400).json({ message: "User doesn't exist with this email" });
+//             }
+//             else
+//             {
+//                 transporter.sendMail({
+//                     to: user.Email,
+//                     from: "resetpass233@gmail.com",
+//                     subject: "Password Reset",
+//                     html: `<h2>${user.Name}, you have Successfully Booked ${id} tickets for ${str} <strong></strong> Movie Show. </h2>
+//                     <h3>Thank You</h3>`
+//                 })
+//                 res.json({ message: "Check your Email" })
+//             }
+//         })
+//         .catch((error) => res.status(400).json({ message: "Try again later" }));
+// });

@@ -64,7 +64,7 @@ function Login()
             {error && <ErrorMsg variant="danger">{error}</ErrorMsg>}
             {loading && <LoadingScreen />}
             <h2>LOGIN</h2>
-            <Form method="POST" onSubmit={Submit}>
+            <Form method="POST" onSubmit={Submit} className='login'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" name="Email" placeholder="Enter email" value={Email} onChange={(e) => SetEmail(e.target.value)} />

@@ -12,4 +12,4 @@ function ErrorMsg({ variant = "info", children })
     )
 }
 
-export default ErrorMsg
+export default ErrorMsg;

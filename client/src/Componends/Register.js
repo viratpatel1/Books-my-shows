@@ -69,7 +69,7 @@ function Register()
                         <input type="email" name="Email" placeholder="Email" value={user.Email} onChange={handleInput}></input>
                         <input type="password" name="Password" placeholder="Passoword" value={user.Password} onChange={handleInput}></input>
                         <input type="password" name="CPassword" placeholder="Confirm Password" value={user.CPassword} onChange={handleInput}></input>
-                        <input onClick={Submit} style={{ padding: "0 10px ", borderRadius: "5px", color: "white", backgroundColor: "rgb(16, 85, 224)" }} type="Submit"></input>
+                        <input onClick={Submit} style={{ padding: "5px 10px ", borderRadius: "5px", color: "white", backgroundColor: " #0d6efd", textAlign: "center", justifyContent: "center" }} type="Submit"></input>
                     </form>
                 </div>
                 <ToastContainer />

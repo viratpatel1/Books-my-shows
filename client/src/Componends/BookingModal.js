@@ -17,16 +17,16 @@ const BookingModal = () =>
     const token = localStorage.getItem("token");
     const { id } = useParams();
 
-    useEffect(() =>
-    {
-        if (!token)
-        {
-            history.push("/login");
-        } else
-        {
-            history.push(`/book-ticket/${id}`);
-        }
-    }, []);
+    // useEffect(() =>
+    // {
+    //     if (!token)
+    //     {
+    //         history.push("/login");
+    //     } else
+    //     {
+    //         history.push(`/book/${id}`);
+    //     }
+    // }, []);
 
     // useEffect(() =>
     // {

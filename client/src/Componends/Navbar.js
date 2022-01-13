@@ -28,10 +28,10 @@ function Navbar()
             return (
                 <>
                     <li>
-                        {(user?.Role === 1) ? null : (<Link style={{ textDecoration: 'none', color: "black" }} exact to="/" >Home</Link>)}
+                        {(user?.Role === 1) ? null : (<Link style={{ textDecoration: 'none', color: "white" }} exact to="/" >Home</Link>)}
                     </li>
                     <li>
-                        <Link style={{ textDecoration: 'none', color: "black" }} onClick={() =>
+                        <Link style={{ textDecoration: 'none', color: "white" }} onClick={() =>
                         {
                             dispatch({ type: "User", payload: false })
                             localStorage.removeItem("token");
@@ -46,13 +46,13 @@ function Navbar()
             return (
                 <>
                     <li>
-                        <Link style={{ textDecoration: 'none', color: "black" }} exact to="/" >Home</Link>
+                        <Link style={{ textDecoration: 'none', color: "white" }} exact to="/" >Home</Link>
                     </li>
                     <li>
-                        <Link style={{ textDecoration: 'none', color: "black" }} exact to="/sign-up" >Register</Link>
+                        <Link style={{ textDecoration: 'none', color: "white" }} exact to="/sign-up" >Register</Link>
                     </li>
                     <li>
-                        <Link style={{ textDecoration: 'none', color: "black" }} exact to="/login" >Login</Link>
+                        <Link style={{ textDecoration: 'none', color: "white" }} exact to="/login" >Login</Link>
                     </li>
                     <li>
                         {/* <h4>{res.Name}</h4> */}

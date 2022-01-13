@@ -62,9 +62,6 @@ function MovieDetails()
 
     return (
         <div style={{ maxWidth: "1327px" }} className="container">
-            {/* {loading && <Box sx={{ display: 'flex' }}>
-                <CircularProgress />
-            </Box>} */}
             {Movie.map((data) =>
             {
                 const { _id, contentType, movie_name, description, poster_path, release_date } = data;
@@ -74,8 +71,8 @@ function MovieDetails()
                         <div>
                             <img src={`data:${contentType};base64,${poster_path}`}></img>
                             <div className="Card-Details">
-                                <h2>{movie_name}</h2>
-                                <p>{description}</p>
+                                {/* <h2>{movie_name}</h2> */}
+                                {/* <p>{description}</p> */}
                                 {/* <p>{release_date}</p> */}
                                 <div className="Button">
                                     <Link to={"/book-ticket/" + movie_name} > <button style={{ padding: "5px 10px 28px 10px" }} >Book Now</button></Link>

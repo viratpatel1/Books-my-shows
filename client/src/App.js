@@ -11,6 +11,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AdminMovies from './Admin-Componends/AdminMovies';
 import EditMovie from './Admin-Componends/EditMovie';
 import Moviess from './Admin-Componends/Movies';
+import MovieDetails from './Componends/MovieDetails';
+import SelectSeat from './Componends/SelectSeat';
+import Payment from './Componends/Payment';
 // import PageNotFound from './Componends/PageNotFound';
 
 
@@ -26,9 +29,13 @@ const Routing = () =>
     <>
       <Switch>
         <Route exact path="/" component={Movies} />
-        <Route exact path="/book-ticket/:id" component={BookingModal} />
+        {/* <Route exact path="/book/:id" component={BookingModal} /> */}
         <Route exact path="/login" component={Login} />
         <Route exact path="/sign-up" component={Register} />
+        <Route exact path="/selectseat/:str/:id" component={SelectSeat} />
+        <Route exact path="/book-ticket/:id" component={MovieDetails} />
+        <Route exact path="/payment/:id" component={Payment} />
+
         {/* <Route exact path="/admin" component={Apps} /> */}
         <Route exact path="/admin/uploadmovies" component={Moviess} />
         <Route exact path="/admin/viewmovies" component={AdminMovies} />

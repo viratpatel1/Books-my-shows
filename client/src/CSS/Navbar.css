@@ -3,11 +3,16 @@
   align-items: center;
   justify-content: space-between;
   /* background-color: burlywood; */
-  background-color: rgb(41, 154, 230);
+  background-color: rgb(51, 53, 69);
   margin: 0px 0px;
-  height: 50px;
+  height: 70px;
   font-size: 20px;
 }
+
+.nav-menu h2 {
+  color: white;
+}
+
 .nav-menu ul {
   display: flex;
   margin-right: 50px;
@@ -21,8 +26,8 @@
   margin: 10px 20px 0 20px;
 }
 .nav-menu ul li:hover {
-  background-color: yellowgreen;
-  color: red;
+  /* background-color: yellowgreen; */
+  color: rgb(65, 52, 52);
   border-radius: 10px;
 }
 

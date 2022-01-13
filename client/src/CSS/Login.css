@@ -8,3 +8,6 @@
   /* margin: auto, 0; */
   background-color: aquamarine;
 }
+.Loginform .login {
+  display: grid;
+}
