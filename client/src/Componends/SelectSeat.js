@@ -69,7 +69,7 @@ const SelectSeat = () =>
             {
                 setEmails(userInfo.Email)
                 console.log("emails ", emails)
-                const resp = await axios.post(`${local}razorpay`, { amount })
+                const resp = await axios.post(`${url}razorpay`, { amount })
                     .then((res) => setGet(res.data))
                     .catch((err) => console.log("errs ", err))
             } catch (error)
@@ -121,7 +121,7 @@ const SelectSeat = () =>
                 {
                     // setEmails(userInfo.Email)
                     console.log("emails ", emails)
-                    const resp = await axios.post(`${local}book-ticket`, { emails, str, id, arr })
+                    const resp = await axios.post(`${url}book-ticket`, { emails, str, id, arr })
                         .then((res) => setGet(res.data))
                         .catch((err) => console.log("errs ", err))
                 } catch (error)
